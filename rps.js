@@ -65,8 +65,7 @@ function game(rounds) {
     }
 }
 
-const playerSelection = "rock"
-const computerSelection = getComputerChoice()
-console.log(playRound(playerSelection, computerSelection))
-
-game(5)
+const btnRock = document.querySelector('#btn-rock');
+btnRock.addEventListener('click', () => {
+    console.log(playRound("rock",getComputerChoice()));
+});
