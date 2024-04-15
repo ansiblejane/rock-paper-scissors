@@ -45,6 +45,7 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
+/* 
 function game(rounds) {
     let score = [0,0]
 
@@ -64,8 +65,34 @@ function game(rounds) {
         console.log("The final score is " + score[0] + "-" + score[1] + ". It's a tie!")
     }
 }
+*/
+
+let totalScore = [0,0];
+
+const body = document.querySelector("body");
+
+const scoreboard = document.createElement("div");
+
+body.appendChild(scoreboard);
 
 const btnRock = document.querySelector('#btn-rock');
 btnRock.addEventListener('click', () => {
-    console.log(playRound("rock",getComputerChoice()));
+    let results = playRound("rock", getComputerChoice());
+    let message = results[0]; 
+    let score = results[1];
+    totalScore = [totalScore[0] + score[0], totalScore[1] + score[1]];
+    scoreboard.textContent = message + " The player score is " + totalScore[0] + " and the computer score is " + totalScore[1] + ".";
 });
+
+const btnPaper = document.querySelector('#btn-paper');
+btnPaper.addEventListener('click', () => {
+    console.log(playRound("paper",getComputerChoice()));
+});
+
+const btnScissors = document.querySelector('#btn-scissors');
+btnScissors.addEventListener('click', () => {
+    console.log(playRound("scissors",getComputerChoice()));
+});
+
+
+
